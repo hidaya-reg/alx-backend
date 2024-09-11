@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic Flask app with locale selection.
+Basic Flask app
 """
 
 from flask import Flask, render_template, request
