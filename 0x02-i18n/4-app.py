@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic Flask app
+Basic Flask app with locale selection
 """
 
 from flask import Flask, render_template, request
@@ -9,7 +9,6 @@ from flask_babel import Babel, _
 
 class Config:
     """language configuration"""
-
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -22,14 +21,19 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale() -> str:
-    """get the best match from supported languages"""
+    """Get the best match from supported languages"""
+    # Check for locale parameter in the URL
+    locale = request.args.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
+    # Fallback to Accept-Language header
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
 def index() -> str:
     """Default route"""
-    return render_template('3-index.html')
+    return render_template('4-index.html')
 
 
 if __name__ == '__main__':
