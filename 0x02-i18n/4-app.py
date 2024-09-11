@@ -3,7 +3,6 @@
 Basic Flask app with locale selection.
 """
 
-
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
