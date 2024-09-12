@@ -10,7 +10,7 @@ class Config:
     """
     language configuration
     """
-    
+
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
