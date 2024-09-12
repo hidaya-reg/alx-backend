@@ -2,6 +2,7 @@
 """
 Basic Flask app
 """
+
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
@@ -10,7 +11,7 @@ class Config:
     """
     Configuration for Flask-Babel.
     """
-    
+
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
