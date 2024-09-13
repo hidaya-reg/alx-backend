@@ -33,7 +33,11 @@ users = {
 
 def get_user() -> Optional[dict]:
     """
-    Returns a user dictionary if the user ID is found, None otherwise.
+    Retrieves the user information based on the
+    'login_as' parameter in the URL.
+
+    Returns:
+        dict or None: User data if found, otherwise None.
     """
     try:
         user_id = int(request.args.get('login_as'))
