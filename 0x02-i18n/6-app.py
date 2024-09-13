@@ -10,6 +10,7 @@ from flask_babel import Babel
 
 class Config:
     """Configuration class for the Flask application and Babel."""
+
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -30,7 +31,8 @@ users = {
 
 def get_user() -> Union[Dict, None]:
     """
-    Retrieves the user information based on the 'login_as' parameter in the URL.
+    Retrieves the user information based on the
+    'login_as' parameter in the URL.
 
     Returns:
         dict or None: User data if found, otherwise None.
@@ -55,22 +57,20 @@ def get_locale() -> str:
     Determines the best locale to use for the current request.
 
     Returns:
-        str: The locale that matches best, according to the URL, user settings, or headers.
+        str: The locale that matches best,
+        according to the URL, user settings, or headers.
     """
     # Check if locale is provided in URL parameters
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
-    
     # Check user preferences if a user is logged in
     if g.user and g.user['locale'] in app.config['LANGUAGES']:
         return g.user['locale']
-    
     # Check if locale is provided in the request headers
     header_locale = request.headers.get('locale')
     if header_locale in app.config['LANGUAGES']:
         return header_locale
-    
     # Fallback to best match based on Accept-Language header
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
