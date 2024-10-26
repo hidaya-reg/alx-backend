@@ -1,12 +1,12 @@
 # 0x00. Pagination
 ## Resources
-Read or watch:
 - [REST API Design: Pagination](https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/#pagination)
 - [HATEOAS](https://www.youtube.com/watch?v=gCNAudrbWCo)
 
 ## Learning Objectives
 <details>
 <summary>How to paginate a dataset with simple `page` and `page_size` parameters</summary>
+
 To paginate a dataset with simple ``page`` and ``page_size`` parameters, you determine the range of items to return based on the page number and the number of items per page.`
 - For ``page=1`` and ``page_size=10``, you would return items from index 0 to 9.
 - For ``page=2`` and ``page_size=10``, you would return items from index 10 to 19.
@@ -25,9 +25,10 @@ print(index_range(2, 10))  # Output: (10, 20)
 </details>
 <details>
 <summary>How to paginate a dataset with hypermedia metadata</summary>
+
 To paginate a dataset with hypermedia metadata, you include additional information in the response that guides the client on how to navigate the pages. This typically includes the current page, page size, total pages, and links to the next and previous pages.
 
-Example: Imagine you have a dataset of 50 items, and you are returning 10 items per page. Along with the data for the current page, you would also return metadata like this:
+**Example:** Imagine you have a dataset of 50 items, and you are returning 10 items per page. Along with the data for the current page, you would also return metadata like this:
 
 ```python
 def paginate_with_hypermedia(page, page_size, total_items):
@@ -59,9 +60,10 @@ This method provides not only the data for the current page but also the necessa
 </details>
 <details>
 <summary>How to paginate in a deletion-resilient manner</summary>
+
 Paginating in a deletion-resilient manner means ensuring that users don’t miss any items in a dataset even if some items are deleted between pagination requests. This is typically done by keeping track of the indices of items rather than just the page numbers.
 
-Example:
+**Example:**
 Imagine you have a dataset with 10 items and you're showing 3 items per page. Normally, if you delete an item, the items on the next page might shift, causing users to miss some data.
 
 To avoid this, you could index the dataset before pagination and use the indices to fetch data, even if items are removed.
