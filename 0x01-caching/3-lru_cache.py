@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-""" LIFO caching module
+""" LRU caching module
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LIFOCache(BaseCaching):
-    """class LIFOCache
+class LRUCache(BaseCaching):
+    """class LRUCache
     """
 
     def __init__(self):
@@ -22,11 +22,10 @@ class LIFOCache(BaseCaching):
 
         if key in self.cache_data.keys():
             self.order.remove(key)
-
-        if len(self.order) >= BaseCaching.MAX_ITEMS:
-            d_key = self.order.pop(-1)
-            print(f"DISCARD: {d_key}")
-            del self.cache_data[d_key]
+        elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            lru_key = self.order.pop(0)
+            print(f"DISCARD: {lru_key}")
+            del self.cache_data[lru_key]
 
         self.cache_data[key] = item
         self.order.append(key)
@@ -36,4 +35,6 @@ class LIFOCache(BaseCaching):
         """
         if key is None:
             return None
-        return self.cache_data.get(key, None)
+        self.order.remove(key)
+        self.order.append(key)
+        return self.cache_data[key]
