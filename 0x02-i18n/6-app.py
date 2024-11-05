@@ -27,7 +27,6 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
-
 def get_user() -> Optional[dict]:
     """
     Retrieves the user information based on the
@@ -39,14 +38,12 @@ def get_user() -> Optional[dict]:
     except (TypeError, ValueError):
         return None
 
-
 @app.before_request
 def before_request() -> None:
     """
     Find the user if any, and set it as a global variable in flask.g.
     """
     g.user = get_user()
-
 
 @babel.localeselector
 def get_locale() -> str:
@@ -57,7 +54,6 @@ def get_locale() -> str:
     if g.user and g.user.get('locale') in app.config['LANGUAGES']:
         return g.user['locale']
     return request.accept_languages.best_match(app.config['LANGUAGES'])
-
 
 @app.route('/')
 def index() -> str:
