@@ -75,6 +75,7 @@ def get_timezone() -> str:
         pass
     return app.config['BABEL_DEFAULT_TIMEZONE']
 
+
 @app.route('/')
 def index() -> str:
     """Default route"""
