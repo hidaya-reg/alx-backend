@@ -19,7 +19,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
 
-# Mock user data
+
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
