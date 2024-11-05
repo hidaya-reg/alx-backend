@@ -493,7 +493,7 @@ In your ``get_locale`` function, detect if the incoming request contains ``local
 
 Now you should be able to test different translations by visiting ``http://127.0.0.1:5000?locale=[fr|en]``.
 **Visiting ``http://127.0.0.1:5000/?locale=fr`` should display this level 1 heading:** 
-![alt text](image.png)
+![alt text](readme_imgs/image.png)
 
 File: ``4-app.py``, ``templates/4-index.html``
 ### 5. Mock logging in
@@ -520,11 +520,11 @@ In your HTML template, if a user is logged in, in a paragraph tag, display a wel
 | ``not_logged_in`` | ``"You are not logged in."``                 | ``"Vous n'êtes pas connecté."``                |
 
 Visiting ``http://127.0.0.1:5000/`` in your browser should display this:
-![alt text](image-1.png)
+![alt text](readme_imgs/image-1.png)
 
 
 Visiting ``http://127.0.0.1:5000/?login_as=2`` in your browser should display this: 
-![alt text](image-2.png)
+![alt text](readme_imgs/image-2.png)
 
 File: ``5-app.py``, ``templates/5-index.html``
 ### 6. Use user locale
@@ -535,7 +535,7 @@ The order of priority should be
 3. Locale from request header
 4. Default locale
 Test by logging in as different users
-![alt text](image-3.png)
+![alt text](readme_imgs/image-3.png)
 
 File: ``6-app.py``, ``templates/6-index.html``
 ### 7. Infer appropriate time zone
@@ -557,10 +557,10 @@ Use the following translations
 | ``current_time_is``  | ``"The current time is %(current_time)s."``     | ``"Nous sommes le %(current_time)s."`` |
 
 Displaying the time in French looks like this:
-![alt text](image-4.png)
+![alt text](readme_imgs/image-4.png)
 
 
 Displaying the time in English looks like this:
-![alt text](image-5.png)
+![alt text](readme_imgs/image-5.png)
 
 File: ``app.py``, ``templates/index.html``, ``translations/en/LC_MESSAGES/messages.po``, ``translations/fr/LC_MESSAGES/messages.po``
